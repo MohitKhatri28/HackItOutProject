@@ -28,25 +28,19 @@ def find_jobs(language):
         search('https://www.timesjobs.com/candidate/job-search.html?searchType=personalizedSearch&from=submit&txtKeywords=python&txtLocation=')
     elif (language=='java'):
         search('https://www.timesjobs.com/candidate/job-search.html?searchType=personalizedSearch&from=submit&txtKeywords=java&txtLocation=')
-    elif (language=='c++' or 'c'):
+    elif (language=='c++' or language=='c'):
         search('https://www.timesjobs.com/candidate/job-search.html?searchType=personalizedSearch&from=submit&txtKeywords=C%2B%2B&txtLocation=')
-    elif (language=='web development' or 'web developer'):
+    elif (language=='web development' or language=='web developer'):
         search('https://www.timesjobs.com/candidate/job-search.html?searchType=personalizedSearch&from=submit&txtKeywords=Web+Development&txtLocation=')
-    elif (language=='graphic designing' or 'graphic designer'):
+    elif (language=='graphic designing' or language=='graphic designer'):
         search('timesjobs.com/candidate/job-search.html?searchType=personalizedSearch&from=submit&txtKeywords=Graphic+Designing&txtLocation=')
-    elif (language=='game developer' or 'game development'):
+    elif (language=='game developer' or language=='game development'):
         search('https://www.timesjobs.com/candidate/job-search.html?searchType=personalizedSearch&from=submit&txtKeywords=Game+Developer&txtLocation=')
-    elif (language=='content writing' or 'content writer'):
+    elif (language=='content writing' or language=='content writer'):
         search('https://www.timesjobs.com/candidate/job-search.html?searchType=personalizedSearch&from=submit&txtKeywords=Content+Writing&txtLocation=')
-    elif (language=='video editing'):
-        search('https://www.timesjobs.com/candidate/job-search.html?searchType=personalizedSearch&from=submit&txtKeywords=Video+Editing&txtLocation=')
     else:
         print("Sorry, didn't get you...")
-        return 0
-
-#print("Enter the skills that you are good at: ")
-#lang = input('>>')
-#print(f"Searching jobs for {lang.lower()}")
+        return -1
 
 def speak(text):
     engine = pyttsx3.init()
@@ -66,7 +60,6 @@ def get_audio():
 
     return said.lower()
 
-
 if __name__ == '__main__':
     print("Started Program")
     END_PHRASE = "stop"
@@ -77,12 +70,12 @@ if __name__ == '__main__':
         print("Listening...")
         text = get_audio()
         print(text)
-        find_jobs(text)
-
-        
-        time_wait = 10
-        print(f'Waiting {time_wait} minutes...')
-        time.sleep(time_wait * 60)
+        if text.find(END_PHRASE) != -1:
+            print('Exit')
+            break
+        else:
+            find_jobs(text)
+            break
 
 
 
