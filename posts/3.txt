@@ -1,3 +1,0 @@
-Company Name: qualityengineeringpvt.ltd.jalgaon 
-Required Skills: hive,scala,hibernate,sql,java,linux,debugging,multithreading,jpa,softwareengineering,mongodb,mq,maven,springboot,cassandra,hdfs,unix 
-More Info Here: https://www.timesjobs.com/job-detail/spark-java-scala-java-quality-engineering-pvt-ltd-jalgaon-bengaluru-bangalore-6-to-9-yrs-jobid-AvEtC6U4UVVzpSvf__PLUS__uAgZw==&source=srp 
