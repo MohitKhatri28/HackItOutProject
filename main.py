@@ -1,6 +1,10 @@
 from bs4 import BeautifulSoup
 import requests
 import time
+import pyttsx3
+import speech_recognition as sr 
+import re
+
 
 def search(link):
     html_text = requests.get(link).text
@@ -18,36 +22,67 @@ def search(link):
                 f.write(f"Required Skills: {skills.strip()} \n")
                 f.write(f"More Info Here: {more_info.strip()} \n")
                 print(f'File Saved: {index}')
-#PythonJobs
+
 def find_jobs(language):
-    if (language=='Python'):  
+    if (language=='python'):  
         search('https://www.timesjobs.com/candidate/job-search.html?searchType=personalizedSearch&from=submit&txtKeywords=python&txtLocation=')
-    elif (language=='Java'):
+    elif (language=='java'):
         search('https://www.timesjobs.com/candidate/job-search.html?searchType=personalizedSearch&from=submit&txtKeywords=java&txtLocation=')
-    elif (language=='C++' or 'C'):
+    elif (language=='c++' or 'c'):
         search('https://www.timesjobs.com/candidate/job-search.html?searchType=personalizedSearch&from=submit&txtKeywords=C%2B%2B&txtLocation=')
-    elif (language=='Web development' or 'Web developer'):
+    elif (language=='web development' or 'web developer'):
         search('https://www.timesjobs.com/candidate/job-search.html?searchType=personalizedSearch&from=submit&txtKeywords=Web+Development&txtLocation=')
-    elif (language=='Graphic designing' or 'Graphic designer'):
+    elif (language=='graphic designing' or 'graphic designer'):
         search('timesjobs.com/candidate/job-search.html?searchType=personalizedSearch&from=submit&txtKeywords=Graphic+Designing&txtLocation=')
-    elif (language=='Game developer' or 'Game development'):
+    elif (language=='game developer' or 'game development'):
         search('https://www.timesjobs.com/candidate/job-search.html?searchType=personalizedSearch&from=submit&txtKeywords=Game+Developer&txtLocation=')
-    elif (language=='Content writing' or 'Content writer'):
+    elif (language=='content writing' or 'content writer'):
         search('https://www.timesjobs.com/candidate/job-search.html?searchType=personalizedSearch&from=submit&txtKeywords=Content+Writing&txtLocation=')
-    elif (language=='Video editing'):
+    elif (language=='video editing'):
         search('https://www.timesjobs.com/candidate/job-search.html?searchType=personalizedSearch&from=submit&txtKeywords=Video+Editing&txtLocation=')
-    
+    else:
+        print("Sorry, didn't get you...")
+        return 0
 
-print("Enter the skills that you are good at: ")
-lang = input('>>')
-print(f"Searching jobs for {lang}")
+#print("Enter the skills that you are good at: ")
+#lang = input('>>')
+#print(f"Searching jobs for {lang.lower()}")
 
-#if (lang==python || lang==Python): 
+def speak(text):
+    engine = pyttsx3.init()
+    engine.say(text)
+    engine.runAndWait()
+
+def get_audio():
+    r = sr.Recognizer()
+    with sr.Microphone() as source:
+        audio = r.listen(source)
+        said = ""
+
+        try:
+            said = r.recognize_google(audio)
+        except Exception as e:
+            print("Exception: ", str(e))
+
+    return said.lower()
+
 
 if __name__ == '__main__':
+    print("Started Program")
+    END_PHRASE = "stop"
+
     while True:
-        find_jobs(lang)
+        print("What skills do you have?")
+        speak("What skills do you have?")
+        print("Listening...")
+        text = get_audio()
+        print(text)
+        find_jobs(text)
+
+        
         time_wait = 10
         print(f'Waiting {time_wait} minutes...')
         time.sleep(time_wait * 60)
+
+
 
