@@ -17,3 +17,5 @@ Then open cmd and go to the directory where you downloaded this pyaudio file.
 Type the following command - pip install (name of the downloaded file)
 example - pip install PyAudio‑0.2.11‑cp39‑cp39‑win_amd64.whl
 https://www.lfd.uci.edu/~gohlke/pythonlibs/#pyaudio ]
+
+
