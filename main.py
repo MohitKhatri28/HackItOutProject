@@ -38,9 +38,11 @@ def find_jobs(language):
         search('https://www.timesjobs.com/candidate/job-search.html?searchType=personalizedSearch&from=submit&txtKeywords=Game+Developer&txtLocation=')
     elif (language=='content writing' or language=='content writer'):
         search('https://www.timesjobs.com/candidate/job-search.html?searchType=personalizedSearch&from=submit&txtKeywords=Content+Writing&txtLocation=')
+    elif (language=='video editing' or language=='video editor'):
+        search('https://www.timesjobs.com/candidate/job-search.html?searchType=personalizedSearch&from=submit&txtKeywords=Video+Editing&txtLocation=')
     else:
         print("Sorry, didn't get you...")
-        return -1
+        return 0
 
 def speak(text):
     engine = pyttsx3.init()
@@ -70,6 +72,7 @@ if __name__ == '__main__':
         print("Listening...")
         text = get_audio()
         print(text)
+
         if text.find(END_PHRASE) != -1:
             print('Exit')
             break
