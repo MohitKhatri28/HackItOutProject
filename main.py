@@ -2,137 +2,40 @@ from bs4 import BeautifulSoup
 import requests
 import time
 
+def search(link):
+    html_text = requests.get(link).text
+    soup = BeautifulSoup(html_text, 'lxml')
+    jobs = soup.find_all('li', class_ = 'clearfix job-bx wht-shd-bx')
+
+    for index, job in enumerate(jobs):
+        published_date = job.find('span', class_ = 'sim-posted').span.text
+        if 'few' in published_date:
+            company_name = job.find('h3', class_ = 'joblist-comp-name').text.replace(' ','')
+            skills = job.find('span', class_ = 'srp-skills').text.replace(' ','')
+            more_info = job.header.h2.a['href']
+            with open(f'posts/{index}.txt', 'w') as f:
+                f.write(f"Company Name: {company_name.strip()} \n")
+                f.write(f"Required Skills: {skills.strip()} \n")
+                f.write(f"More Info Here: {more_info.strip()} \n")
+                print(f'File Saved: {index}')
 #PythonJobs
 def find_jobs(language):
-
     if (language=='Python'):  
-        html_text = requests.get('https://www.timesjobs.com/candidate/job-search.html?searchType=personalizedSearch&from=submit&txtKeywords=python+&txtLocation=').text
-        soup = BeautifulSoup(html_text, 'lxml')
-        jobs = soup.find_all('li', class_ = 'clearfix job-bx wht-shd-bx')
-
-        for index, job in enumerate(jobs):
-            published_date = job.find('span', class_ = 'sim-posted').span.text
-            if 'few' in published_date:
-                company_name = job.find('h3', class_ = 'joblist-comp-name').text.replace(' ','')
-                skills = job.find('span', class_ = 'srp-skills').text.replace(' ','')
-                more_info = job.header.h2.a['href']
-                with open(f'posts/{index}.txt', 'w') as f:
-                    f.write(f"Company Name: {company_name.strip()} \n")
-                    f.write(f"Required Skills: {skills.strip()} \n")
-                    f.write(f"More Info Here: {more_info.strip()} \n")
-                    print(f'File Saved: {index}')
+        search('https://www.timesjobs.com/candidate/job-search.html?searchType=personalizedSearch&from=submit&txtKeywords=python&txtLocation=')
     elif (language=='Java'):
-        html_text = requests.get('https://www.timesjobs.com/candidate/job-search.html?searchType=personalizedSearch&from=submit&txtKeywords=java&txtLocation=').text
-        soup = BeautifulSoup(html_text, 'lxml')
-        jobs = soup.find_all('li', class_ = 'clearfix job-bx wht-shd-bx')
-
-        for index, job in enumerate(jobs):
-            published_date = job.find('span', class_ = 'sim-posted').span.text
-            if 'few' in published_date:
-                company_name = job.find('h3', class_ = 'joblist-comp-name').text.replace(' ','')
-                skills = job.find('span', class_ = 'srp-skills').text.replace(' ','')
-                more_info = job.header.h2.a['href']
-                with open(f'posts/{index}.txt', 'w') as f:
-                    f.write(f"Company Name: {company_name.strip()} \n")
-                    f.write(f"Required Skills: {skills.strip()} \n")
-                    f.write(f"More Info Here: {more_info.strip()} \n")
-                    print(f'File Saved: {index}')
+        search('https://www.timesjobs.com/candidate/job-search.html?searchType=personalizedSearch&from=submit&txtKeywords=java&txtLocation=')
     elif (language=='C++' or 'C'):
-        html_text = requests.get('https://www.timesjobs.com/candidate/job-search.html?searchType=personalizedSearch&from=submit&txtKeywords=C%2B%2B&txtLocation=').text
-        soup = BeautifulSoup(html_text, 'lxml')
-        jobs = soup.find_all('li', class_ = 'clearfix job-bx wht-shd-bx')
-
-        for index, job in enumerate(jobs):
-            published_date = job.find('span', class_ = 'sim-posted').span.text
-            if 'few' in published_date:
-                company_name = job.find('h3', class_ = 'joblist-comp-name').text.replace(' ','')
-                skills = job.find('span', class_ = 'srp-skills').text.replace(' ','')
-                more_info = job.header.h2.a['href']
-                with open(f'posts/{index}.txt', 'w') as f:
-                    f.write(f"Company Name: {company_name.strip()} \n")
-                    f.write(f"Required Skills: {skills.strip()} \n")
-                    f.write(f"More Info Here: {more_info.strip()} \n")
-                    print(f'File Saved: {index}')
+        search('https://www.timesjobs.com/candidate/job-search.html?searchType=personalizedSearch&from=submit&txtKeywords=C%2B%2B&txtLocation=')
     elif (language=='Web development' or 'Web developer'):
-        html_text = requests.get('https://www.timesjobs.com/candidate/job-search.html?searchType=personalizedSearch&from=submit&txtKeywords=Web+Development&txtLocation=').text
-        soup = BeautifulSoup(html_text, 'lxml')
-        jobs = soup.find_all('li', class_ = 'clearfix job-bx wht-shd-bx')
-
-        for index, job in enumerate(jobs):
-            published_date = job.find('span', class_ = 'sim-posted').span.text
-            if 'few' in published_date:
-                company_name = job.find('h3', class_ = 'joblist-comp-name').text.replace(' ','')
-                skills = job.find('span', class_ = 'srp-skills').text.replace(' ','')
-                more_info = job.header.h2.a['href']
-                with open(f'posts/{index}.txt', 'w') as f:
-                    f.write(f"Company Name: {company_name.strip()} \n")
-                    f.write(f"Required Skills: {skills.strip()} \n")
-                    f.write(f"More Info Here: {more_info.strip()} \n")
-                    print(f'File Saved: {index}')
+        search('https://www.timesjobs.com/candidate/job-search.html?searchType=personalizedSearch&from=submit&txtKeywords=Web+Development&txtLocation=')
     elif (language=='Graphic designing' or 'Graphic designer'):
-        html_text = requests.get('timesjobs.com/candidate/job-search.html?searchType=personalizedSearch&from=submit&txtKeywords=Graphic+Designing&txtLocation=').text
-        soup = BeautifulSoup(html_text, 'lxml')
-        jobs = soup.find_all('li', class_ = 'clearfix job-bx wht-shd-bx')
-
-        for index, job in enumerate(jobs):
-            published_date = job.find('span', class_ = 'sim-posted').span.text
-            if 'few' in published_date:
-                company_name = job.find('h3', class_ = 'joblist-comp-name').text.replace(' ','')
-                skills = job.find('span', class_ = 'srp-skills').text.replace(' ','')
-                more_info = job.header.h2.a['href']
-                with open(f'posts/{index}.txt', 'w') as f:
-                    f.write(f"Company Name: {company_name.strip()} \n")
-                    f.write(f"Required Skills: {skills.strip()} \n")
-                    f.write(f"More Info Here: {more_info.strip()} \n")
-                    print(f'File Saved: {index}')
+        search('timesjobs.com/candidate/job-search.html?searchType=personalizedSearch&from=submit&txtKeywords=Graphic+Designing&txtLocation=')
     elif (language=='Game developer' or 'Game development'):
-        html_text = requests.get('https://www.timesjobs.com/candidate/job-search.html?searchType=personalizedSearch&from=submit&txtKeywords=Game+Developer&txtLocation=').text
-        soup = BeautifulSoup(html_text, 'lxml')
-        jobs = soup.find_all('li', class_ = 'clearfix job-bx wht-shd-bx')
-
-        for index, job in enumerate(jobs):
-            published_date = job.find('span', class_ = 'sim-posted').span.text
-            if 'few' in published_date:
-                company_name = job.find('h3', class_ = 'joblist-comp-name').text.replace(' ','')
-                skills = job.find('span', class_ = 'srp-skills').text.replace(' ','')
-                more_info = job.header.h2.a['href']
-                with open(f'posts/{index}.txt', 'w') as f:
-                    f.write(f"Company Name: {company_name.strip()} \n")
-                    f.write(f"Required Skills: {skills.strip()} \n")
-                    f.write(f"More Info Here: {more_info.strip()} \n")
-                    print(f'File Saved: {index}')
+        search('https://www.timesjobs.com/candidate/job-search.html?searchType=personalizedSearch&from=submit&txtKeywords=Game+Developer&txtLocation=')
     elif (language=='Content writing' or 'Content writer'):
-        html_text = requests.get('https://www.timesjobs.com/candidate/job-search.html?searchType=personalizedSearch&from=submit&txtKeywords=Content+Writing&txtLocation=').text
-        soup = BeautifulSoup(html_text, 'lxml')
-        jobs = soup.find_all('li', class_ = 'clearfix job-bx wht-shd-bx')
-
-        for index, job in enumerate(jobs):
-            published_date = job.find('span', class_ = 'sim-posted').span.text
-            if 'few' in published_date:
-                company_name = job.find('h3', class_ = 'joblist-comp-name').text.replace(' ','')
-                skills = job.find('span', class_ = 'srp-skills').text.replace(' ','')
-                more_info = job.header.h2.a['href']
-                with open(f'posts/{index}.txt', 'w') as f:
-                    f.write(f"Company Name: {company_name.strip()} \n")
-                    f.write(f"Required Skills: {skills.strip()} \n")
-                    f.write(f"More Info Here: {more_info.strip()} \n")
-                    print(f'File Saved: {index}')
+        search('https://www.timesjobs.com/candidate/job-search.html?searchType=personalizedSearch&from=submit&txtKeywords=Content+Writing&txtLocation=')
     elif (language=='Video editing'):
-        html_text = requests.get('https://www.timesjobs.com/candidate/job-search.html?searchType=personalizedSearch&from=submit&txtKeywords=Video+Editing&txtLocation=').text
-        soup = BeautifulSoup(html_text, 'lxml')
-        jobs = soup.find_all('li', class_ = 'clearfix job-bx wht-shd-bx')
-
-        for index, job in enumerate(jobs):
-            published_date = job.find('span', class_ = 'sim-posted').span.text
-            if 'few' in published_date:
-                company_name = job.find('h3', class_ = 'joblist-comp-name').text.replace(' ','')
-                skills = job.find('span', class_ = 'srp-skills').text.replace(' ','')
-                more_info = job.header.h2.a['href']
-                with open(f'posts/{index}.txt', 'w') as f:
-                    f.write(f"Company Name: {company_name.strip()} \n")
-                    f.write(f"Required Skills: {skills.strip()} \n")
-                    f.write(f"More Info Here: {more_info.strip()} \n")
-                    print(f'File Saved: {index}')
+        search('https://www.timesjobs.com/candidate/job-search.html?searchType=personalizedSearch&from=submit&txtKeywords=Video+Editing&txtLocation=')
     
 
 print("Enter the skills that you are good at: ")
