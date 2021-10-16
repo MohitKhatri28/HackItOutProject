@@ -16,7 +16,7 @@ def find_jobs(language):
                 company_name = job.find('h3', class_ = 'joblist-comp-name').text.replace(' ','')
                 skills = job.find('span', class_ = 'srp-skills').text.replace(' ','')
                 more_info = job.header.h2.a['href']
-                with open(f'posts/python/{index}.txt', 'w') as f:
+                with open(f'posts/{index}.txt', 'w') as f:
                     f.write(f"Company Name: {company_name.strip()} \n")
                     f.write(f"Required Skills: {skills.strip()} \n")
                     f.write(f"More Info Here: {more_info.strip()} \n")
@@ -32,7 +32,7 @@ def find_jobs(language):
                 company_name = job.find('h3', class_ = 'joblist-comp-name').text.replace(' ','')
                 skills = job.find('span', class_ = 'srp-skills').text.replace(' ','')
                 more_info = job.header.h2.a['href']
-                with open(f'posts/java/{index}.txt', 'w') as f:
+                with open(f'posts/{index}.txt', 'w') as f:
                     f.write(f"Company Name: {company_name.strip()} \n")
                     f.write(f"Required Skills: {skills.strip()} \n")
                     f.write(f"More Info Here: {more_info.strip()} \n")
@@ -48,7 +48,7 @@ def find_jobs(language):
                 company_name = job.find('h3', class_ = 'joblist-comp-name').text.replace(' ','')
                 skills = job.find('span', class_ = 'srp-skills').text.replace(' ','')
                 more_info = job.header.h2.a['href']
-                with open(f'posts/c/{index}.txt', 'w') as f:
+                with open(f'posts/{index}.txt', 'w') as f:
                     f.write(f"Company Name: {company_name.strip()} \n")
                     f.write(f"Required Skills: {skills.strip()} \n")
                     f.write(f"More Info Here: {more_info.strip()} \n")
@@ -64,7 +64,7 @@ def find_jobs(language):
                 company_name = job.find('h3', class_ = 'joblist-comp-name').text.replace(' ','')
                 skills = job.find('span', class_ = 'srp-skills').text.replace(' ','')
                 more_info = job.header.h2.a['href']
-                with open(f'posts/webdev/{index}.txt', 'w') as f:
+                with open(f'posts/{index}.txt', 'w') as f:
                     f.write(f"Company Name: {company_name.strip()} \n")
                     f.write(f"Required Skills: {skills.strip()} \n")
                     f.write(f"More Info Here: {more_info.strip()} \n")
@@ -80,7 +80,7 @@ def find_jobs(language):
                 company_name = job.find('h3', class_ = 'joblist-comp-name').text.replace(' ','')
                 skills = job.find('span', class_ = 'srp-skills').text.replace(' ','')
                 more_info = job.header.h2.a['href']
-                with open(f'posts/graphicdesign/{index}.txt', 'w') as f:
+                with open(f'posts/{index}.txt', 'w') as f:
                     f.write(f"Company Name: {company_name.strip()} \n")
                     f.write(f"Required Skills: {skills.strip()} \n")
                     f.write(f"More Info Here: {more_info.strip()} \n")
@@ -96,7 +96,7 @@ def find_jobs(language):
                 company_name = job.find('h3', class_ = 'joblist-comp-name').text.replace(' ','')
                 skills = job.find('span', class_ = 'srp-skills').text.replace(' ','')
                 more_info = job.header.h2.a['href']
-                with open(f'posts/gamedev/{index}.txt', 'w') as f:
+                with open(f'posts/{index}.txt', 'w') as f:
                     f.write(f"Company Name: {company_name.strip()} \n")
                     f.write(f"Required Skills: {skills.strip()} \n")
                     f.write(f"More Info Here: {more_info.strip()} \n")
@@ -112,7 +112,7 @@ def find_jobs(language):
                 company_name = job.find('h3', class_ = 'joblist-comp-name').text.replace(' ','')
                 skills = job.find('span', class_ = 'srp-skills').text.replace(' ','')
                 more_info = job.header.h2.a['href']
-                with open(f'posts/contentwriter/{index}.txt', 'w') as f:
+                with open(f'posts/{index}.txt', 'w') as f:
                     f.write(f"Company Name: {company_name.strip()} \n")
                     f.write(f"Required Skills: {skills.strip()} \n")
                     f.write(f"More Info Here: {more_info.strip()} \n")
@@ -128,7 +128,7 @@ def find_jobs(language):
                 company_name = job.find('h3', class_ = 'joblist-comp-name').text.replace(' ','')
                 skills = job.find('span', class_ = 'srp-skills').text.replace(' ','')
                 more_info = job.header.h2.a['href']
-                with open(f'posts/videoedit/{index}.txt', 'w') as f:
+                with open(f'posts/{index}.txt', 'w') as f:
                     f.write(f"Company Name: {company_name.strip()} \n")
                     f.write(f"Required Skills: {skills.strip()} \n")
                     f.write(f"More Info Here: {more_info.strip()} \n")
